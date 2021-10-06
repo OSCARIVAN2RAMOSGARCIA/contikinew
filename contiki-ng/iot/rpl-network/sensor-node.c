@@ -35,11 +35,11 @@ PROCESS_THREAD(sensor_node, ev, data)
         uint8_t got_server_address = NETSTACK_ROUTING.get_root_ipaddr(&server_address);
 
         if (is_node_reachable && got_server_address) {
-            LOG_INFO("Sending request %u to ", counter);
+            LOG_INFO("Sending request to ");
             LOG_INFO_6ADDR(&server_address);
             LOG_INFO_("\n");
         
-            float temp_reading=read_temperatur();
+            float temp_reading=read_temperature();
             float hum_reading=read_humidity();
 
             snprintf(buffer, sizeof(buffer), "temp:%.2f,humidity:%.2f",temp_reading,hum_reading);
